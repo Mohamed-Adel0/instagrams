@@ -147,13 +147,13 @@ const Register = () => {
                     name="password"
                     onChange={handleChange}
                   />
-                  <input
+{/*                   <input
                     required
                     type="password"
                     placeholder="Reapet Password"
                     name="reaPetpassword"
                     onChange={handleChange}
-                  />
+                  /> */}
                   {/* <div className="textError">
                     {ChangeValue.reaPetpassword !== ChangeValue.password &&
                       Accpet && (
