@@ -16,8 +16,10 @@ const Login = () => {
   const [EmailInvalid, SetEmailInvalid] = useState("");
   const [PasswordInvalid, SetPasswordInvalid] = useState("");
   const { login } = useAuth();
+  const [loading, setLoading] = useState(false); 
 
   const ValidationLogin = async (TakeValue) => {
+    setLoading(true); 
     try {
       await axios
         .post(
@@ -52,14 +54,17 @@ const Login = () => {
               window.location.pathname = "/";
             }, 500);
             login();
+            setLoading(false); // إيقاف التحميل بعد النجاح
           }
         });
     } catch (err) {
+      setLoading(false); // إيقاف التحميل في حال حدوث خطأ
       if (err.response.data.status !== "sucess") {
         SetErrorMail(err.response.data.data);
       }
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const CheckEmail = /^[a-zA-Z]{3,15}[0-9]{0,4}@(hotmail|yahoo|gmail).com$/g;
@@ -88,11 +93,13 @@ const Login = () => {
       SetErrorMail("Email is not Valid");
     }
   };
+
   const handleChange = (e) => {
     const Validation = { ...TakeValue };
     Validation[e.target.name] = e.target.value;
     SetTakeValue({ ...Validation });
   };
+
   return (
     <div>
       <div className="parent-login">
@@ -131,7 +138,13 @@ const Login = () => {
                     {ErrorPass} {PasswordInvalid}
                   </p>
                 </div> */}
-                <button>Log in</button>
+                <button disabled={loading}>
+                  {loading ? (
+                    <div className="loader"></div> 
+                  ) : (
+                    "Log in"
+                  )}
+                </button>
               </form>
               <fieldset>
                 <legend>Or</legend>
