@@ -68,16 +68,16 @@ const Login = () => {
       SetErrorMail(false);
       if (Checkpassword.test(TakeValue.password)) {
         ValidationLogin(TakeValue);
-        toast('Welcome To Your Home',
-          {
-            icon: '🥳',
-            style: {
-              borderRadius: '10px',
-              background: '#333',
-              color: '#fff',
-            },
-          }
-        );
+        // toast('Welcome To Your Home',
+        //   {
+        //     icon: '🥳',
+        //     style: {
+        //       borderRadius: '10px',
+        //       background: '#333',
+        //       color: '#fff',
+        //     },
+        //   }
+        // );
         SetErrorPass(false);
       } else {
         SetErrorPass(true);
