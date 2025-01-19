@@ -10,7 +10,7 @@ const Register = () => {
     lastName: "",
     email: "",
     password: "",
-    reaPetpassword: "",
+    //reaPetpassword: "",
   });
   const Path = useNavigate();
   const [allarmEmail, SetAllarmEmail] = useState(false);
